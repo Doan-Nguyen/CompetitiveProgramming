@@ -15,10 +15,11 @@ int main(){
         Create single linked list includes 3 nodes
     */
     LinkedList a;
-    // Node* newNode = new Node();
-    // a.addNode(5);
-    // a.addNode(10);
-    a.popBack();
+    // Node* head = NULL;
+    a.addNode(5);
+    a.addNode(10);
+    // a.popBack();
+    a.addAfter(7);
     a.printLinkedList();
 
     return 0;

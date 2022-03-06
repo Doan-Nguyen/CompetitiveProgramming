@@ -9,7 +9,7 @@ using namespace std;
 
 class LinkedList{
     private:
-        Node *head, * tail;
+        Node *head, *tail;
     public:
         LinkedList(){
             head = NULL;
@@ -110,12 +110,13 @@ class LinkedList{
             }
         }
 
-        void addAfter(Node* newNode, int value){
+        // void addAfter(Node* givenNode, int value){
+        void addAfter(int value){
             Node* node_temp = new Node;
             node_temp->data = value;
-            node_temp->next = newNode;
-            newNode->next = node_temp;
-            if (tail == newNode){
+            node_temp->next = this->head->next;
+            this->head->next = node_temp;
+            if (tail == this->head){
                 tail = node_temp;
             }
         }
