@@ -1,14 +1,26 @@
+/*
+Reference:
+https://www.coursera.org/learn/data-structures/supplement/XRXNY/slides-and-external-references
+*/
+
 #include <iostream>
+#include "header/linkedlist.h"
+
 using namespace std;
 
-int a [] = {1, 2, 3, 4};
-int result=0;
+
 
 int main(){
-    for(int i=0; i < 5; i++){
-        result += a[i];
-    }
+    /*
+        Create single linked list includes 3 nodes
+    */
+    LinkedList a;
+    // Node* newNode = new Node();
+    // a.addNode(5);
+    // a.addNode(10);
+    a.popBack();
+    a.printLinkedList();
 
-    cout << "Results: " <<result << endl;
     return 0;
 }
+
