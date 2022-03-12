@@ -29,6 +29,7 @@ class LinkedList{
             /*
             visualization: https://www.cpp.edu/~ftang/courses/CS240/lectures/slist.htm
             */
+            // allocate node
             Node* newNode = new Node;
             newNode = createNode(value);
             //
@@ -57,6 +58,18 @@ class LinkedList{
             }
         }
 
+        // void topFront(){
+        //     /*
+        //     return front item
+        //     */
+        //     if (head->next == NULL){
+        //         cout << "Linked list empty" << endl;
+        //     }
+        //     else{
+        //         return head->next;
+        //     }
+        // }
+
         void popFront(){
             // Update head to node 2nd
             if (head == NULL){
@@ -73,14 +86,12 @@ class LinkedList{
             Visualization: https://drive.google.com/file/d/1YCFs4a8lzYLOLIGOLo1RiSha_ouw3HaG/view?usp=sharing
             */
             Node* newNode = new Node;
-            //
             newNode = createNode(value);
             newNode->next = tail;
             //
             if (tail == NULL){
                 head = newNode;
                 tail = newNode;
-
             }
             else{
                 tail->next = newNode;
@@ -110,27 +121,18 @@ class LinkedList{
             }
         }
 
-        // void addAfter(Node* givenNode, int value){
-        void addAfter(int value){
+        void addAfter(Node* givenNode, int value){
+            //
             Node* node_temp = new Node;
             node_temp->data = value;
-            node_temp->next = this->head->next;
-            this->head->next = node_temp;
-            if (tail == this->head){
-                tail = node_temp;
-            }
+            // node_temp->next = this->head->next;
+            node_temp->next = givenNode->next;
+            givenNode->next = node_temp;
         }
 
-        void printLinkedList(){
-            Node* n = new Node;
-            n = head;
-            while (n != NULL)
-            {
-                cout << n->data << endl;
-                n = n->next;
-            }
-        }
 };
+
+
 
 
 
