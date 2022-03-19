@@ -8,6 +8,14 @@ struct Node{
     Node* next;
 };
 
+Node* createNode(int val){
+    // Node* newNode = new Node();
+    Node* newNode = new Node;
+    newNode->data = val;
+    newNode->next = NULL;
+    //
+    return newNode;
+}
 
 int length(Node* head){
     Node* current = head;
@@ -19,12 +27,6 @@ int length(Node* head){
     return count;
 }
 
-void printList(Node* n){
-    while(n != NULL){
-        std::cout << "Node's value: " << n->data << std::endl;
-        // next node
-        n = n->next;
-    }
-}
+
 
 #endif
