@@ -46,9 +46,6 @@ public class Queue {
         current_size++;
     }
 
-    public int peekFirst(){
-        return  head.data;
-    }
 
     public int peekLast(){
         Node tmp_node = new Node();
@@ -59,5 +56,28 @@ public class Queue {
             tmp_node = tmp_node.next;
         }
         return last_val;
+    }
+
+    public void dislayLinkedList(){
+        Node current = head;
+        //
+        if (head == null){
+            System.out.println("Linked list empty");
+        }
+        else{
+            while(current != null){
+                System.out.println("Current node data: " + current.data);
+                current = current.next;
+            }
+        }
+    }
+
+    public static void main(String args[]){
+        Queue new_queue = new Queue();
+        new_queue.enqueue(5);
+        new_queue.enqueue(1);
+        new_queue.enqueue(6);
+        //
+        new_queue.dislayLinkedList();
     }
 }

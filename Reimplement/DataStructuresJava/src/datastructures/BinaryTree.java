@@ -38,7 +38,25 @@ public class BinaryTree {
         preorderTraversalDF(root.right);
     }
 
-    public void postorderTraversal(NodeTree root){
+    public void postorderTraversalDF(NodeTree root){
+        /**/
+        if (root==null){
+            return;
+        }
+        else{
+            postorderTraversalDF(root.left);
+            postorderTraversalDF(root.right);
+            System.out.println("%d " + root.data);
+        }
+    }
+
+
+    public void levelTraversal(NodeTree root){
+        /*      Queue implement Breadth First Search*/
+        if (root==null){
+            return;
+        }
+
 
     }
 
@@ -55,5 +73,32 @@ public class BinaryTree {
             return 0;
         }
         return 1 + size(root.right) + size(root.left);
+    }
+
+    public static NodeTree createBinaryTree(){
+
+        NodeTree rootNode =new NodeTree(10);
+        NodeTree node20=new NodeTree(20);
+        NodeTree node30=new NodeTree(30);
+        NodeTree node40=new NodeTree(40);
+        NodeTree node50=new NodeTree(50);
+        NodeTree node60=new NodeTree(60);
+        NodeTree node70=new NodeTree(70);
+        NodeTree node80=new NodeTree(80);
+        NodeTree node90=new NodeTree(90);
+
+        rootNode.left=node20;
+        rootNode.right=node30;
+
+        node20.left=node40;
+        node20.right=node50;
+
+        node30.left=node60;
+        node30.right=node70;
+
+        node70.left=node80;
+        node70.right=node90;
+
+        return rootNode;
     }
 }
