@@ -1,52 +1,52 @@
 package datastructures;
 
 
-public class LinkedList {
-    private Node head = null;
-    private Node tail = null;
+public class LinkedList<T> {
+    private int size = 0;
+    private Node<T> head = null;
+    private Node<T> tail = null;
+
+    private static class Node<T>{
+        private T data;
+        private Node<T> prev, next;
+
+        public Node(T initial_data, Node<T> initial_prev, Node<T> initial_next){
+            this.data = initial_data;
+            this.prev = initial_prev;
+            this.next = initial_next;
+        }
+    };
+
+    public int size(){
+        return size;
+    }
 
     public boolean isEmpty(){
-        return head==null;
+        return (size() == 0);
     }
 
-    public int length(){
-        Node tmp_node = new Node();
-        tmp_node = head;
-        int count = 0;
-        if(tmp_node == null){
-            return 0;
+    public void clear(){
+        /*          Empty this linked list - O(n)     */
+        Node<T> tmp_node = head;
+        while(tmp_node != null){
+            Node<T> next_node = tmp_node.next;
+            //      remove prev, next node & current node's data
+            tmp_node.prev = null;
+            tmp_node.next = null;
+            tmp_node.data = null;
+            tmp_node = next_node;
         }
-        else{
-            while (tmp_node != null){
-                count ++;
-                tmp_node = tmp_node.next;
-            }
-            return count;
-        }
+        //      remove head, tail & temporary node
+        head = null;
+        tail = null;
+        tmp_node = null;
+        size = 0;
     }
 
-    /*          Insertion           */
-    public void pushFront(int val){
-        Node new_node = new Node();
-        new_node.data = val;
-        new_node.next = null;
-        //
-        if (head == null){
-            head = new_node;
-            tail = new_node;
-        }
-        else{
-            new_node.next = head;
-            head = new_node;
-        }
-    }
-
-    public void pushBack(int val){
-        Node new_node = new Node();
-        new_node.data = val;
-        new_node.next = null;
-        //
-        if (tail == null){
+    /*          Intersection                */
+    public void addLast(T val){
+        Node<T> new_node = new Node<T>(val, null, null);
+        if(isEmpty()){
             head = new_node;
             tail = new_node;
         }
@@ -54,49 +54,122 @@ public class LinkedList {
             tail.next = new_node;
             tail = new_node;
         }
+        size ++;
     }
 
-    public void pushIndex(int index_pos, int val){
-        Node new_node = new Node();
-        new_node.data = val;
-        new_node.next = null;
-        //
-        if (index_pos==1){
-            new_node.next = head;
+    public void addFist(T val){
+        Node<T> new_node = new Node<T>(val, null, null);
+        if(isEmpty()){
             head = new_node;
-        }
-        else {
-            Node tmp_node = new Node();
-            tmp_node = head;
-            for (int i=1; tmp_node != null & i < index_pos; i++){
-                tmp_node = tmp_node.next;
-            }
-            new_node.next = tmp_node.next;
-            tmp_node.next = new_node;
-        }
-    }
-
-    /*          Deletion           */
-    public void popFirst(){
-        if (head == null){
-            System.out.println("Linked list empty");
+            tail = new_node;
         }
         else{
-            head = head.next;
+            head.prev = new_node;
+            head = head.prev;
         }
+        size ++;
     }
 
-    public void popBack(){
-        if (head == tail) System.out.println("Linked list empty");
-        else{
-            Node tmp = new Node();
-            tmp = head;
-            while (tmp.next.next != null){
-                tmp = tmp.next;
-            }
-            tmp.next = null;
-            tail = tmp;
+    public void addAtPosition(int idx, T data)throws Exception{
+        if(idx > size() || idx < 0){
+            throw new Exception("Index incorrect");
+        } else if(idx == 0){
+            addFist(data);
+        } else if(idx == size()){
+            addLast(data);
         }
+        //      get exactly node in idx-position
+        Node<T> tmp_node = head;
+        for(int i=0; i < idx - 1; i++){
+            tmp_node = tmp_node.next;
+        }
+        //      lắp vào (new node) & gắn lại (2 nodes cũ)
+        Node<T> new_node = new Node<>(data, tmp_node, tmp_node.next);
+        tmp_node.next.prev = new_node;
+        tmp_node.next = new_node;
+        //
+        size++;
+    }
+
+    public T peerFirst(){
+        /*          return: head.data           */
+        if(isEmpty()){
+            throw new RuntimeException("Empty list");
+        }
+        return head.data;
+    }
+
+    public T peerLast(){
+        /*          return: tail.data           */
+        if(isEmpty()){
+            throw new RuntimeException("Empty list");
+        }
+        return tail.data;
+    }
+
+    /*              Deletion                    */
+    public T removeFirst(){
+        if(isEmpty()){
+            throw new RuntimeException("Empty list");
+        }
+        T data = head.data;
+        head = head.next;
+        //          Memory cleanup
+        if(isEmpty()) tail = null;
+        else head.prev = null;
+        //
+        size --;
+        return data;
+    }
+
+    public T removeLast(){
+        /*  Return data & remove last node*/
+        if(isEmpty()){
+            throw new RuntimeException("Empty list");
+        }
+        T last_data = tail.data;
+        tail = tail.prev;
+        //          Memory cleanup
+        if(isEmpty()) head=null;
+        else tail.next = null;
+        //
+        return last_data;
+    }
+
+    private T remove(Node<T> node){
+        if(node.prev == null) removeFirst();
+        if(node.next == null) removeLast();
+        //
+        T data = node.data;
+        //      make the pointers of adjacent nodes skip over 'node'
+        node.prev.next = node.next;
+        node.next.prev = node.prev;
+        //          memory cleanup
+        node.data = null;
+        node = null;
+        node.next = null;
+        node.prev = null;
+        //          update size
+        size--;
+        return data;
+    }
+
+    public void removeAt(int index){
+        if(index < 0 || index > size()){
+            throw new IllegalArgumentException();
+        }
+        int i;
+        Node<T> trav;
+        //              get exactly node with index
+        for(i = 0 , trav=head; i != index; i++){
+            trav = trav.next;
+        }
+        for (i = size() - 1, trav=tail; i != index; i--){
+            trav = trav.prev;
+        }
+        //          remove node
+        remove(trav);
+
     }
 
     /*        show linked list     */
@@ -112,26 +185,6 @@ public class LinkedList {
                 current = current.next;
             }
         }
-    }
-
-
-
-    public static void main(String args[]){
-        LinkedList my_linked_list = new LinkedList();
-        my_linked_list.pushFront(5);
-        my_linked_list.pushFront(10);
-        my_linked_list.pushBack(20);
-        my_linked_list.pushBack(30);
-        my_linked_list.dislayLinkedList();
-        System.out.println("Linked list org");
-        my_linked_list.pushIndex(2, 100);
-//        my_linked_list.popFirst();
-        my_linked_list.dislayLinkedList();
-//        System.out.println("Linked list pop back");
-//        my_linked_list.popBack();
-//        my_linked_list.dislayLinkedList();
-        int count = my_linked_list.length();
-        System.out.println("Number node: " + count);
     }
 }
 
