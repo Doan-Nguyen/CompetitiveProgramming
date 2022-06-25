@@ -169,7 +169,6 @@ public class LinkedList<T> {
         }
         //          remove node
         remove(trav);
-
     }
 
     /*        show linked list     */

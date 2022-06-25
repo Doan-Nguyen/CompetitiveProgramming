@@ -50,7 +50,6 @@ public class BinaryTree {
         }
     }
 
-
     public void levelTraversal(NodeTree root){
         /*      Queue implement Breadth First Search*/
         if (root==null){
@@ -74,6 +73,8 @@ public class BinaryTree {
         }
         return 1 + size(root.right) + size(root.left);
     }
+
+    public int getMax;
 
     public static NodeTree createBinaryTree(){
 
