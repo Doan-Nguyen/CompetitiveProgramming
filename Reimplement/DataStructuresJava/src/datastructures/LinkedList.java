@@ -1,3 +1,25 @@
+/*
++ Yeu cau:
+- class trong java
+- reference type & value/primitive type trong java    
+
++ Dinh nghia:
+```
+public class SinglyListNode{
+    int val;
+    SinglyListNode next;
+    SinglyListNode (int x){val = x;}
+}
+```
+
++ Dac diem:
+- chi can *head* -> truy xuat ca mang
+- kha nang truy xuat O(n)
+- kha nang them/xoa 1 phan tu: O(1) . Note: phan tu do phai biet truoc
+*/
+
+
+
 package datastructures;
 
 
