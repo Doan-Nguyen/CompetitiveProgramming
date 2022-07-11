@@ -1,9 +1,6 @@
 package leetcode;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 
 class Solution {
@@ -19,11 +16,29 @@ class Solution {
         return true;
     }
 
+    public int[] twoSum(int[] nums, int target) {
+        Map<Integer, Integer> mapValueIndex = new HashMap<>();
+        for (int i=0; i < nums.length; i++){
+            int currValue = nums[i];
+            mapValueIndex.getOrDefault(currValue, i);
+        }
+        TreeMap<Integer, Integer> sortedMap = new TreeMap<Integer, Integer>(mapValueIndex);
+        System.out.println(sortedMap);
+        //
+        int i = 0;
+        int j = mapValueIndex.size() - 1;
+//        while(i < j){
+//            if (sortedMap.)
+//        }
+        int[] output = {1, 2};
+        return output;
+    }
+
 
     public static void main(String argr[]){
         Solution slt = new Solution();
-        int[] nums = new int [] {1,2,3,1};
-        boolean status = slt.containsDuplicate(nums);
+        int[] nums = new int [] {3,3};
+        int[] status = slt.twoSum(nums, 9);
         System.out.println(status);
     }
 
