@@ -4,7 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3076d8a9-c661-494b-b252-7790845f9fe7" name="Changes" comment="" />
+    <list default="true" id="3076d8a9-c661-494b-b252-7790845f9fe7" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/runConfigurations.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../leetcode/DataStructure/src/main/java/_20_Valid_Parentheses.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../leetcode/DataStructure/src/main/java/stack/_155_Min_Stack.java" beforeDir="false" afterPath="$PROJECT_DIR$/../leetcode/DataStructure/src/main/java/stack/_155_Min_Stack.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../leetcode/DataStructure/src/main/java/stack/_20_Valid_Parentheses.java" beforeDir="false" afterPath="$PROJECT_DIR$/../leetcode/DataStructure/src/main/java/stack/_20_Valid_Parentheses.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -18,7 +26,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="ProjectId" id="2CNAjfASDj5wQHFjMcVrd11BPny" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -68,6 +76,7 @@
       <updated>1658632809341</updated>
       <workItem from="1658632812698" duration="3880000" />
       <workItem from="1659472262530" duration="224000" />
+      <workItem from="1659972912891" duration="22000" />
     </task>
     <servers />
   </component>

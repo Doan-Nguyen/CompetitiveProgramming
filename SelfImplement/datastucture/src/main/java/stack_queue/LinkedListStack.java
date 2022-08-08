@@ -40,7 +40,7 @@ public class LinkedListStack implements InterfaceStackQueue{
             return  -1;
         }
         int topValue = topNode.value;
-        topNode = topNode.next;
+//        topNode = topNode.next;
         return topValue;
     }
 
