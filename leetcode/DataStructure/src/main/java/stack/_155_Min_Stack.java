@@ -1,8 +1,3 @@
-package stack;
-
-
-import javax.swing.plaf.synth.SynthUI;
-
 /**
  * Your MinStack object will be instantiated and called as such:
  * MinStack obj = new MinStack();
@@ -12,34 +7,31 @@ import javax.swing.plaf.synth.SynthUI;
  * int param_4 = obj.getMin();
  */
 
-public class _155_Min_Stack {
-    /*      Linked list
-    * */
-    public _155_Min_Stack() {
-    }
+package stack;
 
-    class Node {
+public class _155_Min_Stack {
+    class Node{
         int val;
         int minVal;
         Node next;
+
+
         Node(int val, int minVal, Node next){
             this.val = val;
             this.minVal = minVal;
-            this.next = null;
+            this.next = next;
         }
     }
 
-    // initialize a top node
-    Node topNode;
+//    Node topNode = new Node();
+    private Node topNode;
 
-
-    /*  this function determines the min value.
-    * */
     public void push(int val) {
         if (topNode == null){
             topNode = new Node(val, val, null);
         } else {
-            topNode = new Node(val, Math.min(val, topNode.minVal), topNode);
+            Node newNode = new Node(val, Math.min(topNode.minVal, val), topNode);
+            topNode = newNode;
         }
     }
 
@@ -62,21 +54,24 @@ public class _155_Min_Stack {
 
     public void show(){
         if (topNode == null){
-            System.out.println("Emtpy");
+            System.out.println("Empty!");
         } else {
-            while (topNode != null){
+            while(topNode != null){
                 System.out.print(topNode.val + " - ");
                 topNode = topNode.next;
             }
         }
     }
 
-    public static void main(String args[]){
-        _155_Min_Stack minStack = new _155_Min_Stack();
-        minStack.push(10);
-        minStack.push(20);
-        minStack.push(30);
-        minStack.pop();
-        minStack.show();
+    public static void main(String[] args){
+        _155_Min_Stack test = new _155_Min_Stack();
+        test.push(10);
+        test.push(20);
+        test.push(30);
+        test.push(40);
+        test.pop();
+        System.out.println(test.top());
+        System.out.println(test.getMin());
+        test.show();
     }
 }
