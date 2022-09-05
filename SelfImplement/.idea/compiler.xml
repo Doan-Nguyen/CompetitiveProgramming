@@ -6,9 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="Recursion" />
-        <module name="DataStructure" />
+        <module name="datastucture" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="SelfImplement" target="17" />
+    </bytecodeTargetLevel>
   </component>
 </project>
